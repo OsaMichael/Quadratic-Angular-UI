@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-title>Quadratic Solution</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="solveEquation()" #equationForm="ngForm">
+      <mat-form-field>
+        <mat-label>A</mat-label>
+        <input matInput type="number" required [(ngModel)]="input.A" name="A">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>B</mat-label>
+        <input matInput type="number" required [(ngModel)]="input.B" name="B">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>C</mat-label>
+        <input matInput type="number" required [(ngModel)]="input.C" name="C">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!equationForm.valid">Solve</button>
+    </form>
+  </mat-card-content>
+  <mat-card-actions *ngIf="result">
+    <p>{{ result.message }}</p>
+    <p *ngIf="result.root1">Root 1: {{ result.root1 }}</p>
+    <p *ngIf="result.root2">Root 2: {{ result.root2 }}</p>
+  </mat-card-actions>
+</mat-card>
